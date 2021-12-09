@@ -30,7 +30,7 @@ module BootstrapPagination
       if page == current_page
         tag("li", tag("span", page), class: "active")
       else
-        tag("li", link(page, page, link_options.merge(rel: rel_value(page))))
+        tag("li", link(page, page, link_options.merge(rel: rel_value(page), "data-turbolinks": false)))
       end
     end
 
@@ -38,7 +38,7 @@ module BootstrapPagination
       link_options = @options[:link_options] || {}
 
       if page
-        tag("li", link(text, page, link_options), class: classname)
+        tag("li", link(text, page, link_options.merge("data-turbolinks": false)), class: classname)
       else
         tag("li", tag("span", text), class: "%s disabled" % classname)
       end
